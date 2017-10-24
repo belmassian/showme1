@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ShowMe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+  .myLink {display: none}
+  </style>
+</head>
+
+  <body class="w3-light-grey">
+    <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+      <img class="w3-image" src="blackboard.jpg" alt="London" width="1500" height="700">
+      <div class="w3-display-middle signInContainer" style="width:65%">
+        <div class="w3-container">
+          <img class="logo bigLogo" src="img/logo_crop_long.png">
+        </div>
+        <div class="w3-container">
+          <div class="w3-panel w3-padding-16 w3-black w3-card-2">
+            <form id="signin" name="signin" method="post" action="signin">
+              <label for="email">Email Address</label>
+              <input class="text" name="email" type="text" />
+              <label for="password">Password</label>
+              <input name="password" type="password" />
+              <input class="btn signInBtn" type="submit" value="Sign In" />
+              <p class="message"><a class="createLink" href="password.html">Forgot Password?</a></p>
+              <p class="message">Not Registered? <a class="createLink" href="signup.html">Create an Account</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+<script>
+var config = {
+  baseUrl: 'https://acme.okta.com',
+  logo: '/path/to/logo.png',
+  helpSupportNumber: '(123) 456-7890',
+  language: 'en',
+  i18n: {
+    en: {
+      'primaryauth.title': 'Sign in to Acme'
+    }
+  },
+  helpLinks: {
+    help: 'https://acme.com/help'
+  }
+};
+
+var signIn = new OktaSignIn(config);
+signIn.renderEl(
+  // Assumes there is an empty element on the page with an id of 'osw-container'
+  {el: '#w3-container'},
+
+  function success(res) {
+    // The properties in the response object depend on two factors:
+    // 1. The type of authentication flow that has just completed, determined by res.status
+    // 2. What type of token the widget is returning
+
+    // The user has started the password recovery flow, and is on the confirmation
+    // screen letting them know that an email is on the way.
+    if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
+      // Any followup action you want to take
+      return;
+    }
+
+    // The user has started the unlock account flow, and is on the confirmation
+    // screen letting them know that an email is on the way.
+    if (res.status === 'UNLOCK_ACCOUNT_EMAIL_SENT') {
+      // Any followup action you want to take
+      return;
+    }
+
+    // The user has successfully completed the authentication flow
+    if (res.status === 'SUCCESS') {
+
+      // Handle success when the widget is not configured for OIDC
+
+      if (res.type === 'SESSION_STEP_UP') {
+        // Session step up response
+        // If the widget is not configured for OIDC and the authentication type is SESSION_STEP_UP,
+        // the response will contain user metadata and a stepUp object with the url of the resource
+        // and a 'finish' function to navigate to that url
+        console.log(res.user);
+        console.log('Target resource url: ' + res.stepUp.url);
+        res.stepUp.finish();
+        return;
+      } else {
+        // If the widget is not configured for OIDC, the response will contain
+        // user metadata and a sessionToken that can be converted to an Okta
+        // session cookie:
+        console.log(res.user);
+        res.session.setCookieAndRedirect('https://acme.com/app');
+        return;
+      }
+
+
+      // OIDC response
+
+      // If the widget is configured for OIDC with a single responseType, the
+      // response will be the token.
+      // i.e. authParams.responseType = 'id_token':
+      console.log(res.claims);
+      signIn.tokenManager.add('my_id_token', res);
+
+      // If the widget is configured for OIDC with multiple responseTypes, the
+      // response will be an array of tokens:
+      // i.e. authParams.responseType = ['id_token', 'token']
+      signIn.tokenManager.add('my_id_token', res[0]);
+      signIn.tokenManager.add('my_access_token', res[1]);
+
+      return;
+    }
+
+  },
+
+  function error(err) {
+    // The widget will handle most types of errors - for example, if the user
+    // enters an invalid password or there are issues authenticating.
+    //
+    // This function is invoked with errors the widget cannot recover from:
+    // 1. Known errors: CONFIG_ERROR, UNSUPPORTED_BROWSER_ERROR, OAUTH_ERROR
+    // 2. Uncaught exceptions
+  }
+);
+      </script>
+
+
+  </body>
+
+</html>
