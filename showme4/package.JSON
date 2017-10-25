@@ -79,3 +79,49 @@
     "webpack": "1.13.3"
   }
 }
+{
+  "name": "showme3",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@okta/okta-signin-widget": "^1.9.0",
+    "axios": "^0.17.0",
+    "bcrypt": "^1.0.3",
+    "bundle": "^0.2.3",
+    "create-react-class": "^15.6.2",
+    "html-jsx-loader": "^0.1.17",
+    "jsonwebtoken": "^8.1.0",
+    "material-ui": "^0.19.4",
+    "mongoose": "^4.12.4",
+    "mui": "0.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-materialize": "^1.0.16",
+    "react-passport-auth": "^1.2.1",
+    "react-redux": "^5.0.6",
+    "react-render-html": "^0.5.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.14",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
+    "update": "^0.7.4",
+    "w3-css": "^4.0.4",
+    "w3-react": "^1.0.0",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "html-loader": "^0.5.1",
+    "html-to-react-loader": "^1.0.0-alpha.10",
+    "redux-devtools": "^3.4.0"
+  }
+}
