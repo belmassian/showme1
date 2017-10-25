@@ -8,10 +8,7 @@ import * as routes from '../../constants/routes';
 
 const SignInPage = ({ history }) =>
   <div>
-    <h1>SignIn</h1>
     <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
   </div>
 
 const updateByPropertyName = (propertyName, value) => () => ({
@@ -21,7 +18,6 @@ const updateByPropertyName = (propertyName, value) => () => ({
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: null,
 };
 
 class SignInForm extends Component {
@@ -61,16 +57,34 @@ class SignInForm extends Component {
 
 
     return (
-      <div class="w3-container">
-        <div class="w3-panel w3-padding-16 w3-black w3-card-2">
-          <form id="signin" name="signin" method="post" action="signin">
-            <label for="email">Email Address</label>
-            <input class="text" name="email" type="text" />
-            <label for="password">Password</label>
-            <input name="password" type="password" />
-            <input class="btn signInBtn" type="submit" value="Sign In" />
-          </form>
+      <div className="w3-container w3-center w3-padding-16">
+      <div className="w3-panel w3-padding-16 w3-black w3-card-2">
+      <form onSubmit={this.onSubmit}>
+      <label for="email">Email Address</label>
+        <input
+          value={email}
+          onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+          type="text"
+          placeholder="Email Address"
+        />
+        <div className="password">
+        <label for="password">Password </label></div>
+        <div>
+        <input
+          value={password}
+          onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
+          type="password"
+          placeholder="Password"
+        />
         </div>
+        <div>
+        <button type="submit">
+          Sign In
+        </button>
+        </div>
+
+      </form>
+      </div>
       </div>
     );
   }

@@ -23,11 +23,15 @@ class HomePage extends Component {
     const { users } = this.props.userStore;
 
     return (
+      <div className="w3-container w3-center w3-padding-16">
+      <div className="w3-panel w3-padding-16 w3-black w3-card-2">
       <div>
         <h1>Home</h1>
         <p>The Home Page is accessible by every signed in user.</p>
 
         { !!users.length && <UserList users={users} /> }
+      </div>
+      </div>
       </div>
     );
   }

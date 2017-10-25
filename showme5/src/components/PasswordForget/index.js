@@ -48,19 +48,27 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
+      <div className="w3-container w3-center w3-padding-16">
+      <div className="w3-panel w3-padding-16 w3-black w3-card-2">
       <form onSubmit={this.onSubmit}>
+      <div>
         <input
           value={this.state.email}
           onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
+        </div>
+        <div>
         <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
+        </div>
 
         { error && <p>{error.message}</p> }
       </form>
+      </div>
+      </div>
     );
   }
 }

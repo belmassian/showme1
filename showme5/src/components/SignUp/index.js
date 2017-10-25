@@ -9,7 +9,6 @@ import * as routes from '../../constants/routes';
 
 const SignUpPage = ({ history }) =>
   <div>
-    <h1>SignUp</h1>
     <SignUpForm history={history} />
   </div>
 
@@ -79,6 +78,8 @@ class SignUpForm extends Component {
       username === '';
 
     return (
+      <div className="w3-container w3-center w3-padding-16">
+      <div className="w3-panel w3-padding-16 w3-black w3-card-2">
       <form onSubmit={this.onSubmit}>
         <input
           value={username}
@@ -92,24 +93,32 @@ class SignUpForm extends Component {
           type="text"
           placeholder="Email Address"
         />
+        <div>
         <input
           value={passwordOne}
           onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
           type="password"
           placeholder="Password"
         />
+        </div>
+        <div>
         <input
           value={passwordTwo}
           onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
           type="password"
           placeholder="Confirm Password"
         />
+        </div>
+        <div>
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>
+        </div>
 
         { error && <p>{error.message}</p> }
       </form>
+      </div>
+      </div>
     );
   }
 }
