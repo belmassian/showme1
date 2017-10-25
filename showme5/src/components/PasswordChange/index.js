@@ -48,7 +48,8 @@ class PasswordChangeForm extends Component {
       <div className="w3-container w3-center w3-padding-16">
       <div className="w3-panel w3-padding-16 w3-black w3-card-2">
       <form onSubmit={this.onSubmit}>
-        <div><input
+        <div>
+        <input
           value={passwordOne}
           onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
           type="password"
