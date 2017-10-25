@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
-import Home from './Home';
-import LoginPage from './auth/LoginPage';
+import React from 'react';
+import ReactDom from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Router } from 'react-router-dom';
+import history from './history.js'
+import routes from './routes.js';
 
-const config = {
-  issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-  redirect_uri: window.location.origin + '/implicit/callback',
-  client_id: '{clientId}'
-}
+// remove tap delay, essential for MaterialUI to work properly
+injectTapEventPlugin();
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Security issuer={config.issuer}
-                  client_id={config.clientId}
-                  redirect_uri={config.redirect_uri} >
-          <Route path='/' exact={true} component={Home}/>
-          <Route path='/implicit/callback' component={ImplicitCallback} />
-        </Security>
-      </Router>
-    );
+
+class App extends React.Component {
+    render() {
+      return (
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Router history={history} routes={routes} />
+        </MuiThemeProvider>
+      );
+    }
   }
-}
 
-export default App;
+  export default App;
