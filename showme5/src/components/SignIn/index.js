@@ -57,12 +57,8 @@ class SignInForm extends Component {
     const {
       email,
       password,
-      error,
     } = this.state;
 
-    const isInvalid =
-      password === '' ||
-      email === '';
 
     return (
       <div class="w3-container">
