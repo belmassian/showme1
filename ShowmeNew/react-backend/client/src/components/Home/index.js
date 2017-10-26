@@ -1,0 +1,52 @@
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+import { compose } from 'recompose';
+
+import withAuthorization from '../Session/withAuthorization';
+import { db } from '../../firebase';
+
+const fromObjectToList = (object) =>
+  object
+    ? Object.keys(object).map(key => ({ ...object[key], index: key }))
+    : [];
+
+class HomePage extends Component {
+  componentDidMount() {
+    const { userStore } = this.props;
+
+    db.onceGetUsers().then(snapshot =>
+      userStore.setUsers(fromObjectToList(snapshot.val()))
+    );
+  }
+
+  render() {
+    const { users } = this.props.userStore;
+
+    return (
+      <div className="w3-container w3-center w3-padding-16">
+      <div className="w3-panel w3-padding-16 w3-black w3-card-2">
+      <div>
+        <h1>Home</h1>
+        <p>The Home Page is accessible by every signed in user.</p>
+
+        { !!users.length && <UserList users={users} /> }
+      </div>
+      </div>
+      </div>
+    );
+  }
+}
+
+const UserList = ({ users }) =>
+  <div>
+    <h2>List of App User IDs (Saved on Sign Up in Firebase Database)</h2>
+    {users.map(user =>
+      <div key={user.index}>{user.index}</div>
+    )}
+  </div>
+
+export default compose(
+  withAuthorization(true),
+  inject('userStore'),
+  observer
+)(HomePage);
