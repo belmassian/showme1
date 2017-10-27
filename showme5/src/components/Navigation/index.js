@@ -22,9 +22,11 @@ const NavigationAuth = () =>
 
 const NavigationNonAuth = () =>
   <ul>
-    <li><Link to="/signup">Sign Up</Link></li>
+    <li><Link to="/home">Home</Link></li>
+    <li><Link to="/account">Account</Link></li>
+    <li><SignOutButton /></li>
   </ul>
-
+  
 export default compose(
   inject('sessionStore'),
   observer
