@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import PeopleCard from './PeopleCard';
+import * as firebase from 'firebase';
+import { db } from './firebase';
+
+
 
 class MainArea extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       people: [
         {
