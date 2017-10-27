@@ -13,27 +13,27 @@ class MainArea extends Component {
       people: [
         {
           id: 1,
-          name: "David Davidson",
-          company: "Some Company, Inc",
-          description: "Met at a party. Will connect with later"
+          name: "Nick Grismore",
+          company: "TBD",
+          description: "Never loss a game, just ran out of time"
         },  
         {
           id: 2,
-          name: "Mark Markson",
-          company: "Some Company, Inc",
-          description: "Met at a party. Will connect with later"
+          name: "Funky Monkey",
+          company: "Zoo",
+          description: "Give me some dope beats and i'll danceeeee"
         },
         {
           id: 3,
-          name: "Judy Judyson",
+          name: "Bri",
           company: "Some Company, Inc",
-          description: "Met at a party. Will connect with later"
+          description: "Pats fan"
         },
         {
           id: 4,
-          name: "James Jameson",
-          company: "Some Company, Inc",
-          description: "Met at a party. Will connect with later"
+          name: "Mentor",
+          company: "Works at Apple",
+          description: "User rating here"
         }
       ]
     }
