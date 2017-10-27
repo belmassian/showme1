@@ -2,7 +2,6 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
-
 import SignOutButton from '../SignOut';
 
 const Navigation = ({ sessionStore }) =>
@@ -26,7 +25,7 @@ const NavigationNonAuth = () =>
     <li><Link to="/account">Account</Link></li>
     <li><SignOutButton /></li>
   </ul>
-  
+
 export default compose(
   inject('sessionStore'),
   observer

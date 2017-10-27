@@ -13,11 +13,17 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import withAuthentication from '../Session/withAuthentication';
 import * as routes from '../../constants/routes';
-
+import React, { Component } from 'react';
+import firebaseApp from './firebase/Firebase';
+import Navbar from './Navbar';
+import './css/font-awesome.css'
+import './css/bootstrap-social.css';
 import './index.css';
 
-const App = () =>
-  <Router>
+const App = () => {
+    console.log('mmmmm')
+
+    return <Router>
     <div className="app">
       <Navigation />
 
@@ -33,5 +39,6 @@ const App = () =>
       <hr/>
     </div>
   </Router>
+}
 
 export default withAuthentication(App);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 // import './css/font-awesome.css'
 // import './css/bootstrap-social.css';
 class App extends Component {

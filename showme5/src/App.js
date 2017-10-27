@@ -24,7 +24,24 @@ class App extends Component {
     });
   } 
   render() {
+    console.log('zzzzzzzz')
     return (
+      <Router>
+          <div className="app">
+            <Navigation />
+
+            <hr/>
+
+            <Route exact path={routes.LANDING} component={LandingPage} />
+            <Route exact path={routes.SIGN_UP} component={SignUpPage} />
+            <Route exact path={routes.SIGN_IN} component={SignInPage} />
+            <Route exact path={routes.PASSWORD_FORGET} component={PasswordForgetPage} />
+            <Route exact path={routes.HOME} component={HomePage} />
+            <Route exact path={routes.ACCOUNT} component={AccountPage} />
+
+            <hr/>
+          </div>
+        </Router>      
       <div className="App">
         <div className="App-header">
           <h4>React / Firebase with Authentication</h4>

@@ -17,6 +17,7 @@ class Navbar extends Component {
     });
   }
   render() {
+    console.log('sdafasdfasdf');
     var loginButton;
     var signup;
     if (this.props.loggedin) {
