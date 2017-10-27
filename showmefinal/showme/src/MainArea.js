@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import PeopleCard from './PeopleCard';
 import * as firebase from 'firebase';
-import { db } from './firebase';
-
+import MessageBox from './components/MessageBox';
+import MessageList from './components/MessageList';
 
 
 class MainArea extends Component {
@@ -16,7 +16,7 @@ class MainArea extends Component {
           name: "David Davidson",
           company: "Some Company, Inc",
           description: "Met at a party. Will connect with later"
-        },
+        },  
         {
           id: 2,
           name: "Mark Markson",
@@ -46,8 +46,9 @@ class MainArea extends Component {
   render () {
     let peopleCards = this.state.people.map(person => {
       return (
-        <Col sm="4">
+        <Col sm="3">
           <PeopleCard key={person.id} removePerson={this.removePerson.bind(this)} person={person} />
+          <MessageList db={firebase} />
         </Col>
       )
     })
@@ -55,6 +56,9 @@ class MainArea extends Component {
       <Container fluid>
         <Row>
           {peopleCards}
+        </Row>
+        <Row>
+          <MessageBox db={firebase} />
         </Row>
       </Container>
     )

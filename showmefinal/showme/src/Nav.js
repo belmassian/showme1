@@ -18,16 +18,18 @@ export default class TopNav extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light toggleable color="info">
+        <Navbar color="info" light toggleable color="light">
           <NavbarToggler right onClick={this.toggle} />
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand><a className="navbar-item" href="/MainArea">
+            {this.props.title}
+          </a></NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/components/">Signin</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+                <NavLink href="https://github.com/reactstrap/reactstrap">SignOut</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
